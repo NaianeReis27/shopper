@@ -1,13 +1,20 @@
 {
   "compilerOptions": {
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
     "target": "es2017",
     "module": "commonjs",
     "outDir": "./dist",
     "rootDir": "./src",
     "lib": ["ES6"],
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "typeRoots": [
+      "./src/@types",
+      "./node_modules/@types"
+    ]
   },
+  
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }
