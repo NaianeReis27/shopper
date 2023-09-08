@@ -21,3 +21,14 @@ export interface ProductResponse {
     price_limite: 'upper' | 'lower' | 'range' | null
   }
 }
+
+export interface ProductWithPack {
+  id: number
+  pack_id: number
+  product_id: number
+  qty: number
+  code: number
+  name: string
+  cost_price: number
+  sales_price: number
+}

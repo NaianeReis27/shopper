@@ -27,9 +27,7 @@ export const Global = createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
   }
 
-  body{
-    background-color: var(--color-tertiary);
-  }
+
   button {
       padding: 10px;
       background-color: var(--color-alert-success);

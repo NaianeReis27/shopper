@@ -76,7 +76,6 @@ export const Table = styled.table`
     background-color: var(--color-alert-warning);
    
   }
-
   .range{
     background-color: var(--color-alert-success);
   }

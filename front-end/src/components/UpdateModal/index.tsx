@@ -10,13 +10,13 @@ export const UpdateModal = ({ title, setIsOpen, id }: Modal) => {
   const [product, setProduct] = useState<null | ProductResponse | undefined>(
     null
   );
-  const [inputValuePrice, setInputValuePrice] = useState("");
+  const [inputValuePrice, setInputValuePrice] = useState<string | number>("");
 
   useEffect(() => {
     const productFind = products.find((ele) => ele.code === id);
     if(productFind){
       setProduct(productFind);
-      setInputValuePrice(productFind.new_price.toString())
+      setInputValuePrice(productFind.new_price)
     }
     
   }, [id, products]);

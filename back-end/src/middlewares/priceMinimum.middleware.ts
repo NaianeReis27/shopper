@@ -7,7 +7,7 @@ const priceMinimumMiddleware = async (
   next: NextFunction
 
 ): Promise<void> => {
-  const query = 'SELECT * FROM products, packs WHERE code = ?'
+  const query = 'SELECT * FROM products WHERE code = ?'
   const data = req.body
   req.products = []
   for (const product of data) {
@@ -22,9 +22,7 @@ const priceMinimumMiddleware = async (
         }
       })
     })
-    console.log(result)
     if (result) {
-      console.log(product.new_price)
       const percent = (product.new_price - Number(result.sales_price)) / Number(result.sales_price)
       const productData = {
         code: Number(result.code),

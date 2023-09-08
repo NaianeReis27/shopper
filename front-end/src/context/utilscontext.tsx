@@ -23,7 +23,6 @@ export const UtilsProvider = ({ children }: ApiContextProps) => {
 
 
   useEffect(()=>{
-console.log("g",products)
   },[products])
   const isProductsValid = (data: ProductResponse[]) => {
       const valid = data.every(

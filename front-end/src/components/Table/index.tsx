@@ -3,7 +3,7 @@ import { Table } from "./styles";
 import { useContext, useState } from "react";
 import { UtilsContext } from "../../context/utilscontext";
 import { NumericFormat } from "react-number-format";
-import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import { AiFillEdit } from "react-icons/ai";
 import { UpdateModal } from "../UpdateModal";
 
 export const TableComponent = () => {
@@ -96,9 +96,6 @@ export const TableComponent = () => {
                     />
                     <button onClick={() => handleclick(code)}>
                       <AiFillEdit fill={"white"} size={20} />
-                    </button>
-                    <button>
-                      <AiFillDelete fill={"white"} size={20} />
                     </button>
                   </td>
                   <td>

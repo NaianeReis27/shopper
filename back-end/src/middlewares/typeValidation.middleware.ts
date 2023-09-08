@@ -14,7 +14,7 @@ const typeValidationMiddleware = async (
     }
   })
   if (errorArray.length > 0) {
-    throw new AppError(`Os campos product_code e new_price devem ser númericos:  ${JSON.stringify(errorArray)}`, 409)
+    throw new AppError(`Os campos product_code e new_price devem ser númericos: ${JSON.stringify(errorArray)}`, 409)
   }
   next()
 }
