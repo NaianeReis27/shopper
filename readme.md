@@ -1,7 +1,6 @@
 # Teste Técnico - Shopper
 
-Este é o meu projeto para o teste técnico da Shopper.com.br. Neste teste, desenvolvi uma aplicação que atende aos requisitos fornecidos pela Shopper.com.br para a construção de uma ferramenta de atualização de preços em lojas de e-commerce.
-
+Este é um projeto para o teste técnico da Shopper.
 
 https://github.com/NaianeReis27/shopper/assets/100942719/cf48707f-79e5-451b-b7f0-b7eda2135f41.mp4
 
