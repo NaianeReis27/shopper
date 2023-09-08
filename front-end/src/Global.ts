@@ -26,4 +26,26 @@ export const Global = createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
   }
 
+  body{
+    background-color: var(--color-tertiary);
+  }
+  button {
+      padding: 10px;
+      background-color: var(--color-alert-success);
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    button:active {
+      transform: scale(0.95);
+      background-color: var(--color-bg-form);
+    }
+
+    button[disabled] {
+    opacity: 0.5; 
+    cursor: not-allowed; 
+  }
+
 `;

@@ -4,33 +4,35 @@ export const Table = styled.table`
   width: 100%;
   max-width: 1200px;
   border: none;
-  margin: -200px auto 0;
+  margin: -100px auto 0;
   background-color: white;
   border-radius: 15px;
   border-collapse: collapse;
   border: none; 
   overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  
   thead{
     padding: 10px;
     padding: 10px 20px;
-    background-color: var(--color-header);
+    background-color: white;
+    color: var(--color-primary);
     tr{
       height: 60px;
-      color: var(--color-white);
+      
       th{
         text-align: left;
         padding: 0 20px;
       }
     }
   }
-
+ 
   tbody {
     tr {
+    color: white;
     height: 50px;
-    font-family: OpenSans-Regular;
     padding: 0 20px;
     font-size: 15px;
-    color: gray;
     line-height: 1.2;
     font-weight: unset;
   }
@@ -39,6 +41,20 @@ export const Table = styled.table`
     padding: 0 20px;
     vertical-align: middle;
     text-align: left;
+    
+  }
+
+  .container-btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    button{
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 60px;
+    }
   }
 
   .prices{
@@ -49,19 +65,20 @@ export const Table = styled.table`
      
     }
   }
-
+  .no-products-found{
+    color: black
+  }
   .upper{
     background-color: var(--color-alert-error);
-    color: white;
   }
 
   .lower{
     background-color: var(--color-alert-warning);
-    color: black;
+   
   }
 
   .range{
-    background-color: green;
+    background-color: var(--color-alert-success);
   }
 }
 `;

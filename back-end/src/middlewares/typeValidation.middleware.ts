@@ -9,7 +9,7 @@ const typeValidationMiddleware = async (
   const errorArray: ProductValid[] = []
   const data: ProductValid[] = req.body
   data.forEach((ele) => {
-    if (isNaN(ele.product_code)) {
+    if (isNaN(ele.code)) {
       errorArray.push(ele)
     }
   })

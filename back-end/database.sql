@@ -21,10 +21,10 @@ INSERT INTO Products VALUES (1020, 'SUPER PACK RED BULL VARIADOS - 6 UNIDADES', 
 
 CREATE TABLE Packs 
 (
-  id bigint AUTO_INCREMENT PRIMARY KEY, -- id primário da tabela
-  pack_id bigint NOT NULL,  -- id do produto pack 
-  product_id bigint NOT NULL, -- id do produto componente
-  qty bigint NOT NULL, -- quantidade do produto componente no pack
+  id bigint AUTO_INCREMENT PRIMARY KEY,
+  pack_id bigint NOT NULL,  
+  product_id bigint NOT NULL, 
+  qty bigint NOT NULL,
   CONSTRAINT FOREIGN KEY (pack_id) REFERENCES Products(code),
   CONSTRAINT FOREIGN KEY (product_id) REFERENCES Products(code)
 );

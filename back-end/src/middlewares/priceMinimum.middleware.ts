@@ -11,7 +11,7 @@ const priceMinimumMiddleware = async (
   const data = req.body
   req.products = []
   for (const product of data) {
-    const keys = [product.product_code]
+    const keys = [product.code]
 
     const [result] = await new Promise<any>((resolve, reject) => {
       connection.query(query, keys, function (err, results) {
@@ -24,17 +24,17 @@ const priceMinimumMiddleware = async (
     })
 
     if (result) {
-      const formattedNewPrice = Number(product.new_price.toFixed(2))
-      const percent = ((formattedNewPrice - Number(result.sales_price)) / Number(result.sales_price)).toFixed(2)
+      console.log(product.new_price)
+      const percent = (product.new_price - Number(result.sales_price)) / Number(result.sales_price)
       const productData = {
         code: Number(result.code),
         name: result.name,
-        new_price: formattedNewPrice,
+        new_price: product.new_price,
         cost_price: Number(result.cost_price),
         sales_price: Number(result.sales_price),
         percent: Number(percent) * 100,
         validations: {
-          price_min: Number(result.cost_price) > formattedNewPrice,
+          price_min: Number(result.cost_price) < product.new_price,
           price_limite: null
         }
       }

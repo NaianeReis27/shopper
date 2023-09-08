@@ -5,7 +5,7 @@ export interface Product {
   sales_price: number
 }
 export interface ProductValid {
-  product_code: number
+  code: number
   new_price: number
 }
 
