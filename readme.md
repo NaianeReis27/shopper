@@ -64,9 +64,9 @@ Para executar este projeto em sua máquina local, siga as etapas abaixo:
 Uso do Aplicativo
 Para utilizar o aplicativo, é necessário inserir um arquivo CSV com as colunas "product_code" e "new_price".
 
-+----------------+-----------+
-| product_code   | new_price |
-+----------------+-----------+
++----------------+-----------+                                                                                                                               
+| product_code   | new_price | 
++----------------+-----------+                                                                                                                                                                                       
 | 1000           | 25.99     |
 | 18             | 19.95     |
 | ...            | ...       |
