@@ -18,7 +18,6 @@ const confirmUpdateProductsServices = async (products: ProductResponse[]): Promi
 
   const codes = products.map(product => product.code)
   const sql = 'SELECT * FROM products WHERE code IN (?)'
-
   const result = await new Promise<any>((resolve, reject) => {
     connection.query(sql, [codes], (err, results) => {
       if (err) {
@@ -33,7 +32,8 @@ const confirmUpdateProductsServices = async (products: ProductResponse[]): Promi
   return result.map((ele: ProductResponse, index: number) => ({
     ...ele,
     new_price: products[index].new_price,
-    percent: products[index].percent
+    percent: products[index].percent,
+    validation: products[index].validations
   }))
 }
 export default confirmUpdateProductsServices

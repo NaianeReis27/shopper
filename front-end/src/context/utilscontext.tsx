@@ -9,7 +9,7 @@ export interface ApiContextData {
   validationForm: (selectedFile: File) => void;
   updateProducts: () => void;
   editFormProducts: (new_price: number, id: number) => void;
-  productsIsValid: boolean
+  productsIsValid: boolean;
 }
 export const UtilsContext = createContext<ApiContextData>({} as ApiContextData);
 
@@ -17,25 +17,31 @@ export interface ApiContextProps {
   children: ReactNode;
 }
 
-
 export const UtilsProvider = ({ children }: ApiContextProps) => {
   const [products, setproducts] = useState<ProductResponse[]>([]);
-  const [productsIsValid, setProductsIsValid]= useState<boolean>(false);
+  const [productsIsValid, setProductsIsValid] = useState<boolean>(false);
 
-  useEffect(()=> {
-    if(products.length> 0){
-      let valid = products.every(
-        (ele: ProductResponse) => ele.validations?.price_limite === "range" && ele.validations?.price_min)
-      setProductsIsValid(valid)
-    }
-    
+
+  useEffect(()=>{
+console.log("g",products)
   },[products])
+  const isProductsValid = (data: ProductResponse[]) => {
+      const valid = data.every(
+        (ele: ProductResponse) =>
+          ele.validations?.price_limite === "range" &&
+          ele.validations?.price_min === true
+      );
+
+      setProductsIsValid(valid);
+    
+  }
 
   const checkValidation = (data: ProductValidation[]): void => {
     api
       .post<ProductResponse[]>("/valid", data)
       .then((res) => {
         setproducts(res.data);
+        isProductsValid(res.data)
         toast.success("Ação concluída com sucesso!", {
           position: "top-right",
           autoClose: 3000,
@@ -45,23 +51,23 @@ export const UtilsProvider = ({ children }: ApiContextProps) => {
   };
 
   const updateProducts = (): void => {
-    if (
-      products.every(
-        (ele: ProductResponse) =>
-          ele.validations.price_limite === "range" && ele.validations.price_min
-      )
-    ) {
-
+    if (productsIsValid) {
       api
         .patch<ProductResponse[]>("/valid", products)
         .then((res) => {
           setproducts(res.data);
+          console.log(res.data, "segredo");
+          toast.success("Produtos atualizados com sucesso!", {
+            position: "top-right",
+            autoClose: 3000,
+          });
         })
-        .catch((err) => console.log(err));
-        toast.success("Produtos atualizados com sucesso!", {
-          position: "top-right",
-          autoClose: 3000,
-        });
+        .catch((err) =>
+          toast.error("Falha na  atualização dos produtos!", {
+            position: "top-right",
+            autoClose: 3000,
+          })
+        );
     } else {
       toast.error("O arquivo tem que ser alterado!", {
         position: "top-right",
@@ -82,7 +88,6 @@ export const UtilsProvider = ({ children }: ApiContextProps) => {
   };
 
   const validationForm = (selectedFile: File) => {
-   
     const fileReader = new FileReader();
     if (selectedFile) {
       fileReader.onload = function (event) {
@@ -94,7 +99,7 @@ export const UtilsProvider = ({ children }: ApiContextProps) => {
       };
 
       fileReader.readAsText(selectedFile);
-    }else{
+    } else {
       toast.error("É preciso adicionar um arquivo!", {
         position: "top-right",
         autoClose: 3000,
@@ -121,7 +126,7 @@ export const UtilsProvider = ({ children }: ApiContextProps) => {
         validationForm,
         updateProducts,
         editFormProducts,
-        productsIsValid
+        productsIsValid,
       }}
     >
       {children}

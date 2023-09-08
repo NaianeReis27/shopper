@@ -16,13 +16,13 @@ export const UploadComponent = () => {
   }
   };
 
-  const confirmSubmit = () => {
+  const confirmSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | Event)  => {
+    e.preventDefault()
     updateProducts();
   };
 
   const validationSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | Event) => {
     e.preventDefault()
-    console.log(productsIsValid)
     validationForm(selectedFile!);
   };
 
@@ -30,17 +30,17 @@ export const UploadComponent = () => {
     <Form>
       <AiOutlineCloudUpload color="#ffffff" size={60} />
       <input
-        type={"file"}
-        id={"csvFileInput"}
-        accept={".csv"}
+        type="file"
+        id="csvFileInput"
+        accept=".csv"
         onChange={handleOnChange}
       />
-
+  
       <div className="btn-containers">
-        <button type="submit" onClick={(e) => validationSubmit(e)}>
+        <button type="button" onClick={validationSubmit}>
           Validar
         </button>
-        <button type="submit" disabled={!productsIsValid} onClick={confirmSubmit}>
+        <button type="button" disabled={!productsIsValid} onClick={confirmSubmit}>
           Confirmar
         </button>
       </div>

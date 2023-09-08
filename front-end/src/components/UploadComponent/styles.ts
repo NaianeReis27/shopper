@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import background from '../../assets/backgound.webp'
-export const Form = styled.div`
+export const Form = styled.form`
   padding: 40px 0;
   display: flex;
   flex-direction: column;

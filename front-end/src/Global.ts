@@ -17,6 +17,7 @@ export const Global = createGlobalStyle`
     --color-alert-warning: #EC8E0A;
     --color-alert-default: #15553d;
     --color-close-btn: #FF0000;
+    --color-gray: #E5E4E2;
  }
 
   *{

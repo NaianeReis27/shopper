@@ -14,7 +14,11 @@ export const UpdateModal = ({ title, setIsOpen, id }: Modal) => {
 
   useEffect(() => {
     const productFind = products.find((ele) => ele.code === id);
-    setProduct(productFind);
+    if(productFind){
+      setProduct(productFind);
+      setInputValuePrice(productFind.new_price.toString())
+    }
+    
   }, [id, products]);
 
   const closeModal = () => {
@@ -54,7 +58,7 @@ export const UpdateModal = ({ title, setIsOpen, id }: Modal) => {
                   />
                 </div>
 
-                <button onClick={() => onSubmit()} type="submit">
+                <button onClick={() => onSubmit()}>
                   Enviar
                 </button>
               </form>

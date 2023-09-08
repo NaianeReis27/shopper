@@ -80,5 +80,10 @@ export const Table = styled.table`
   .range{
     background-color: var(--color-alert-success);
   }
+
+  .price-gray{
+    background-color: var(--color-gray);
+    color: gray
+  }
 }
 `;

@@ -9,7 +9,7 @@ import { UpdateModal } from "../UpdateModal";
 export const TableComponent = () => {
   const { products } = useContext(UtilsContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [selectProduct, setSelectedProduct] = useState<number| null>(null);
+  const [selectProduct, setSelectedProduct] = useState<number | null>(null);
 
   const handleclick = (id: number) => {
     setIsOpen(true);
@@ -51,11 +51,13 @@ export const TableComponent = () => {
                 validations,
               }) => (
                 <tr
-                  className={
-                    validations?.price_limite
-                      ? validations.price_limite
+                  className={`${
+                    validations?.price_min === false
+                      ? "price-gray"
+                      : validations?.price_limite
+                      ? validations?.price_limite
                       : "range"
-                  }
+                  }`}
                 >
                   <td>{code}</td>
                   <td>{name}</td>
@@ -116,8 +118,8 @@ export const TableComponent = () => {
           ) : (
             <tr>
               <td className="no-products-found" colSpan={6}>
-    Nenhum produto encontrado. Por favor, adicione um arquivo CSV.
-  </td>
+                Nenhum produto encontrado. Por favor, adicione um arquivo CSV.
+              </td>
             </tr>
           )}
         </tbody>
