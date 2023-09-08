@@ -21,7 +21,6 @@ const updateSalesPrice = async (product: ProductResponse): Promise<any> => {
 }
 
 const getUpdatedProductsWithPack = async (codes: number[]): Promise<any> => {
-  console.log(codes)
   const selectQuery = ' SELECT packs.*, products.* FROM products LEFT JOIN packs ON packs.pack_id = products.code WHERE packs.pack_id IN (?) OR products.code IN (?)'
   const selectValues = [codes, codes]
   const results = await promisifyQuery(selectQuery, selectValues)
