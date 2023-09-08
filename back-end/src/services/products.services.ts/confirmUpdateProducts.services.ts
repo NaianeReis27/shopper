@@ -56,11 +56,12 @@ const confirmUpdateProductsServices = async (
 
   const productIdWithoutNull = productsWithoutNull.map((ele: { product_id: any }) => ele.product_id)
 
-  const calculatedSalesPrices = productsWithoutNull.map(
-    (data: ProductWithPack) => Number(data.sales_price) / data.qty
-  )
-
-  await updateSalesPricesBulk(productIdWithoutNull, calculatedSalesPrices)
+  if (productIdWithoutNull.length > 0) {
+    const calculatedSalesPrices = productsWithoutNull.map(
+      (data: ProductWithPack) => Number(data.sales_price) / data.qty
+    )
+    await updateSalesPricesBulk(productIdWithoutNull, calculatedSalesPrices)
+  }
 
   const listProductsUpdated = await getProductsByCodes(productCodes)
   const mergedProducts = listProductsUpdated.map((ele: Product) => {

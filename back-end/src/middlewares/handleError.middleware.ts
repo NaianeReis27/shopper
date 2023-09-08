@@ -1,10 +1,15 @@
-import { type Request, type Response } from 'express'
+import { type Request, type Response, type NextFunction } from 'express'
 import { AppError } from '../errors/AppErrors'
 
-const handleErrorMiddleware = async (error: Error, req: Request, res: Response): Promise<Response<any, Record<string, any>>> => {
-  if (error instanceof AppError) {
-    return res.status(error.statusCode).json({
-      message: error.message
+const handleErrorMiddleware = (
+  err: Error,
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Response<any, Record<string, any>> => {
+  if (err instanceof AppError) {
+    return res.status(err.statusCode).json({
+      message: err.message
     })
   }
   return res.status(500).json({

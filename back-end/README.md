@@ -1,2 +1,0 @@
-# shopper
-Teste técnico

@@ -1,8 +1,9 @@
 import 'express-async-errors'
+import handleErrorMiddleware from './middlewares/handleError.middleware'
 import express from 'express'
 import routes from './routes'
 import cors from 'cors'
-import handleErrorMiddleware from './middlewares/handleError.middleware'
+
 
 const app = express()
 
